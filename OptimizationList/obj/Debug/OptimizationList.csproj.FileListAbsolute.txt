@@ -1,0 +1,9 @@
+C:\Users\Каркуша\Documents\Visual Studio 2015\Projects\OptimizationList\OptimizationList\bin\Debug\OptimizationList.exe.config
+C:\Users\Каркуша\Documents\Visual Studio 2015\Projects\OptimizationList\OptimizationList\bin\Debug\OptimizationList.exe
+C:\Users\Каркуша\Documents\Visual Studio 2015\Projects\OptimizationList\OptimizationList\bin\Debug\OptimizationList.pdb
+C:\Users\Каркуша\Documents\Visual Studio 2015\Projects\OptimizationList\OptimizationList\obj\Debug\OptimizationList.csprojResolveAssemblyReference.cache
+C:\Users\Каркуша\Documents\Visual Studio 2015\Projects\OptimizationList\OptimizationList\obj\Debug\OptimizationList.Form1.resources
+C:\Users\Каркуша\Documents\Visual Studio 2015\Projects\OptimizationList\OptimizationList\obj\Debug\OptimizationList.Properties.Resources.resources
+C:\Users\Каркуша\Documents\Visual Studio 2015\Projects\OptimizationList\OptimizationList\obj\Debug\OptimizationList.csproj.GenerateResource.Cache
+C:\Users\Каркуша\Documents\Visual Studio 2015\Projects\OptimizationList\OptimizationList\obj\Debug\OptimizationList.exe
+C:\Users\Каркуша\Documents\Visual Studio 2015\Projects\OptimizationList\OptimizationList\obj\Debug\OptimizationList.pdb
