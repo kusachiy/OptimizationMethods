@@ -13,6 +13,8 @@ namespace OptimizationList
 {
     public partial class Form1 : Form
     {
+        delegate double Function(double arg);
+        Function getValue;
         double EPS;
         const double Ff = 1.6180339887498948482;
         int[] fibArray;
@@ -26,6 +28,7 @@ namespace OptimizationList
             listBox1.Items.Add("Золотого сечения");
             listBox1.Items.Add("Фибоначчи");
             listBox1.Items.Add("Квадратичная интерполяция");
+            getValue = GetValue1;
         }
 
         int[] GetFibbonacci(int n)
@@ -86,7 +89,7 @@ namespace OptimizationList
             }
             st.Stop();
             textXmin.Text = result.ToString();
-            textYmin.Text = GetValue1(result).ToString();
+            textYmin.Text = getValue(result).ToString();
             timestamp.Text = st.Elapsed.TotalMilliseconds.ToString();
         }
         double BisectionMethod(double a, double b)
@@ -98,18 +101,18 @@ namespace OptimizationList
                 if (l < 0)
                     throw new Exception("На заданном отрезке нет единственной точки минимума");
                 double xm = (a + b) / 2;
-                double wm = GetValue1(xm);
-                double x1 = a + l / 4, x2 = b - l / 4;
-                if (GetValue1(x1) < wm)
-                    b = x1;
-                else
-                    a = xm;
-                if (GetValue1(x2) < wm)
-                    a = x2;
-                else
+                double wm = getValue(xm);
+                double x1 = a + l / 4, x2 = b - l / 4;                
+                if(getValue(x1)>=wm)
+                    a = x1;                
+                if (getValue(x2) >= wm)
+                    b = x2;
+                if (getValue(x1) < wm)
                     b = xm;
+                if (getValue(x2) < wm)
+                    a = xm;
             }
-            return a+ l/2;
+            return a + l/2;
         }
 
         double GoldenSectionMethod(double a, double b)
@@ -119,7 +122,7 @@ namespace OptimizationList
             {
                 x1 = b - (b - a) / Ff;
                 x2 = a + (b - a) / Ff;
-                if (GetValue1(x1) <= GetValue1(x2))
+                if (getValue(x1) <= getValue(x2))
                 {
                     b = x2;
                     x2 = x1;
@@ -132,7 +135,7 @@ namespace OptimizationList
                     x2 = a + (b - a) / Ff;
                 }
             }
-            if (GetValue1(x1) > GetValue1(x2))
+            if (getValue(x1) > getValue(x2))
                 return x2;
             else
                 return x1;
@@ -146,7 +149,7 @@ namespace OptimizationList
             {
                 x1 = a + (b - a) * arr[counter-3]/ arr[counter-1];
                 x2 = a + (b - a) *arr[counter-2]/arr[counter-1];
-                if (GetValue1(x1) <= GetValue1(x2))
+                if (getValue(x1) <= getValue(x2))
                 {
                     b = x2;
                     x2 = x1;
@@ -165,11 +168,11 @@ namespace OptimizationList
         double QuadraticInterpolation(double x1, double dx)
         {
             double x2 = x1 + dx, x3, f1, f2, f3, ff, fmin, xmin;
-            if ((f1 = GetValue1(x1)) > (f2 = GetValue1(x2)))
+            if ((f1 = getValue(x1)) > (f2 = getValue(x2)))
                 x3 = x1 + 2 * dx;
             else
                 x3 = x1 - dx;
-            f3 = GetValue1(x3);
+            f3 = getValue(x3);
 
             if (f1 <= f2 && f1 <= f3) { fmin = f1; xmin = x1; }
             if (f2 <= f3 && f2 <= f1) { fmin = f2; xmin = x2; }
@@ -177,14 +180,18 @@ namespace OptimizationList
             double xx = (x2 + x1) / 2 -
                 ((f2 - f1) / (x2 - x1)) / //a1
                 (2 * (1 / (x3 - x2) * ((f3 - f1) / (x3 - x1) - (f2 - f1) / (x2 - x1))));//a2
-            ff = GetValue1(xx);
+            ff = getValue(xx);
             if (Math.Abs(ff - fmin) < EPS && Math.Abs(xx - xmin) < EPS)
                 return xx;
-            return QuadraticInterpolation(xx, dx);
+            return QuadraticInterpolation(xx, dx/2);
         }
-        double GetValue1(double x)
+        double GetValue1(double x) //X^3-12x^2+24x-18 Xmin=6.82 
         {
             return Math.Pow(x, 3) - 12 * Math.Pow(x, 2) + 24 * x - 18;
+        }
+        double GetValue2(double x) // Sin(5*x^4+6*x^3) Xmin= -0.9
+        {
+            return Math.Sin(5 * x * x * x * x + 6 * x * x * x);
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
