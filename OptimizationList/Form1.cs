@@ -28,6 +28,9 @@ namespace OptimizationList
             listBox1.Items.Add("Золотого сечения");
             listBox1.Items.Add("Фибоначчи");
             listBox1.Items.Add("Квадратичная интерполяция");
+            listBox2.Items.Add("X^3-12x^2+24x-18");
+            listBox2.Items.Add("Sin(5*x^4+6*x^3)");
+            listBox2.Items.Add("x^3-3x^2+(15/x)");
             getValue = GetValue1;
         }
 
@@ -58,7 +61,8 @@ namespace OptimizationList
             try
             {
                 EPS = double.Parse(textEPS.Text);
-                a = double.Parse(textA.Text);                
+                a = double.Parse(textA.Text);
+                #region               
                 if (-1 == (method = listBox1.SelectedIndex))
                     throw new Exception("Выберите метод поиска");
                 switch (method)
@@ -81,6 +85,25 @@ namespace OptimizationList
                     default:
                         break;
                 }
+                #endregion
+                #region
+                if (-1 == (method = listBox2.SelectedIndex))
+                    throw new Exception("Выберите тестируемую функцию");
+                switch (method)
+                {
+                    case 0:
+                        getValue = GetValue1;
+                        break;
+                    case 1:
+                        getValue = GetValue2;
+                        break;
+                    case 2:
+                        getValue = GetValue3;
+                        break;                    
+                    default:
+                        break;
+                }
+                #endregion
             }
             catch (Exception eX)
             {
@@ -185,21 +208,28 @@ namespace OptimizationList
                 return xx;
             return QuadraticInterpolation(xx, dx/2);
         }
-        double GetValue1(double x) //X^3-12x^2+24x-18 Xmin=6.82 
+        double GetValue1(double x) //X^3-12x^2+24x-18 Xmin = 6.82 
         {
             return Math.Pow(x, 3) - 12 * Math.Pow(x, 2) + 24 * x - 18;
         }
-        double GetValue2(double x) // Sin(5*x^4+6*x^3) Xmin= -0.9
+        double GetValue2(double x) //Sin(5*x^4+6*x^3) Xmin = -0.9
         {
             return Math.Sin(5 * x * x * x * x + 6 * x * x * x);
         }
-
+        double GetValue3(double x) //x^3-3x^2+(15/x) Xmin = 2.32
+        {
+            return x*x*x - 3*x*x + (15 / x);
+        }
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBox1.SelectedIndex == 3)
                 textB.Enabled = false;
             else
                 textB.Enabled = true;
+        }
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

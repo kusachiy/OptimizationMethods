@@ -43,20 +43,22 @@
             this.textYmin = new System.Windows.Forms.TextBox();
             this.timestamp = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textA
             // 
             this.textA.Location = new System.Drawing.Point(186, 25);
             this.textA.Name = "textA";
-            this.textA.Size = new System.Drawing.Size(75, 20);
+            this.textA.Size = new System.Drawing.Size(80, 20);
             this.textA.TabIndex = 0;
             // 
             // textB
             // 
-            this.textB.Location = new System.Drawing.Point(284, 25);
+            this.textB.Location = new System.Drawing.Point(272, 25);
             this.textB.Name = "textB";
-            this.textB.Size = new System.Drawing.Size(75, 20);
+            this.textB.Size = new System.Drawing.Size(87, 20);
             this.textB.TabIndex = 1;
             // 
             // label1
@@ -79,9 +81,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(186, 51);
+            this.button1.Location = new System.Drawing.Point(183, 76);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(173, 40);
+            this.button1.Size = new System.Drawing.Size(173, 27);
             this.button1.TabIndex = 5;
             this.button1.Text = "Start";
             this.button1.UseVisualStyleBackColor = true;
@@ -89,40 +91,41 @@
             // 
             // textEPS
             // 
-            this.textEPS.Location = new System.Drawing.Point(425, 25);
+            this.textEPS.Location = new System.Drawing.Point(239, 48);
             this.textEPS.Name = "textEPS";
-            this.textEPS.Size = new System.Drawing.Size(89, 20);
+            this.textEPS.Size = new System.Drawing.Size(120, 20);
             this.textEPS.TabIndex = 6;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(369, 28);
+            this.label3.Location = new System.Drawing.Point(183, 51);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 13);
             this.label3.TabIndex = 7;
             this.label3.Text = "(EPS/N):";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(15, 28);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(120, 69);
+            this.listBox1.Size = new System.Drawing.Size(162, 69);
             this.listBox1.TabIndex = 8;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // statusbar
             // 
-            this.statusbar.Location = new System.Drawing.Point(12, 223);
+            this.statusbar.Location = new System.Drawing.Point(15, 194);
             this.statusbar.Name = "statusbar";
             this.statusbar.ReadOnly = true;
-            this.statusbar.Size = new System.Drawing.Size(502, 20);
+            this.statusbar.Size = new System.Drawing.Size(347, 20);
             this.statusbar.TabIndex = 9;
             // 
             // textXmin
             // 
-            this.textXmin.Location = new System.Drawing.Point(225, 103);
+            this.textXmin.Location = new System.Drawing.Point(225, 118);
             this.textXmin.Name = "textXmin";
             this.textXmin.Size = new System.Drawing.Size(134, 20);
             this.textXmin.TabIndex = 10;
@@ -130,7 +133,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(183, 106);
+            this.label4.Location = new System.Drawing.Point(183, 118);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(39, 13);
             this.label4.TabIndex = 11;
@@ -139,7 +142,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(183, 129);
+            this.label5.Location = new System.Drawing.Point(183, 144);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(39, 13);
             this.label5.TabIndex = 13;
@@ -147,32 +150,51 @@
             // 
             // textYmin
             // 
-            this.textYmin.Location = new System.Drawing.Point(225, 126);
+            this.textYmin.Location = new System.Drawing.Point(225, 141);
             this.textYmin.Name = "textYmin";
             this.textYmin.Size = new System.Drawing.Size(134, 20);
             this.textYmin.TabIndex = 12;
             // 
             // timestamp
             // 
-            this.timestamp.Location = new System.Drawing.Point(425, 62);
+            this.timestamp.Location = new System.Drawing.Point(225, 164);
             this.timestamp.Name = "timestamp";
-            this.timestamp.Size = new System.Drawing.Size(89, 20);
+            this.timestamp.Size = new System.Drawing.Size(134, 20);
             this.timestamp.TabIndex = 14;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(369, 65);
+            this.label6.Location = new System.Drawing.Point(183, 167);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(46, 13);
+            this.label6.Size = new System.Drawing.Size(39, 13);
             this.label6.TabIndex = 15;
-            this.label6.Text = "Время :";
+            this.label6.Text = "Time =";
+            // 
+            // listBox2
+            // 
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.Location = new System.Drawing.Point(15, 119);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(162, 69);
+            this.listBox2.TabIndex = 17;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(12, 100);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(174, 13);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "Выберите тестируемую функцию";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(526, 255);
+            this.ClientSize = new System.Drawing.Size(390, 221);
+            this.Controls.Add(this.listBox2);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.timestamp);
             this.Controls.Add(this.label5);
@@ -213,6 +235,8 @@
         private System.Windows.Forms.TextBox textYmin;
         private System.Windows.Forms.TextBox timestamp;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.Label label7;
     }
 }
 
